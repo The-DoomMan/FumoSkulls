@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using Harmony;
+using HarmonyLib;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +24,7 @@ namespace FumoSkull
             SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
             fumobundle = AssetBundle.LoadFromMemory(Resource1.fumoskull);
             fumobundle.LoadAllAssets();
+            new Harmony("tonyfumo.fumoskull").PatchAll();
             allFumos.Add("Crino", Plugin.fumobundle.LoadAsset<GameObject>("CrinoGO"));
             allFumos.Add("Reimu", Plugin.fumobundle.LoadAsset<GameObject>("ReimuGO"));
             allFumos.Add("YuYu", Plugin.fumobundle.LoadAsset<GameObject>("YuYuGO"));
