@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using HarmonyLib;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ namespace FumoSkull
     public class Plugin : BaseUnityPlugin
     {
         public Scene sScene;
+        public static Dictionary<string, GameObject> allFumos = new Dictionary<string, GameObject>();
         bool fumofied;
 
         public static AssetBundle fumobundle;
@@ -22,6 +24,10 @@ namespace FumoSkull
             SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
             fumobundle = AssetBundle.LoadFromMemory(Resource1.fumoskull);
             fumobundle.LoadAllAssets();
+            new Harmony("tonyfumo.fumoskull").PatchAll();
+            allFumos.Add("Crino", Plugin.fumobundle.LoadAsset<GameObject>("CrinoGO"));
+            allFumos.Add("Reimu", Plugin.fumobundle.LoadAsset<GameObject>("ReimuGO"));
+            allFumos.Add("YuYu", Plugin.fumobundle.LoadAsset<GameObject>("YuYuGO"));
         }
 
         private void SceneManagerOnsceneLoaded(Scene scene, LoadSceneMode mode)
@@ -29,63 +35,39 @@ namespace FumoSkull
             sScene = scene;
         }
 
-        private void Update()
+        [HarmonyPatch(typeof(Skull), "Start")]
+        public static class fumofiy
         {
-            GameObject[] rootGameObjects = sScene.GetRootGameObjects();
-            for (int i = 0; i < rootGameObjects.Length; i++)
-                {
-                    foreach (Renderer renderer in rootGameObjects[i].GetComponentsInChildren<Renderer>(true))
-                    {
-                        if (renderer.gameObject.layer == 22 && renderer.gameObject.GetComponent<Skull>() && !renderer.GetComponent<fumofiy>())
-                        {
-                                  renderer.gameObject.AddComponent<fumofiy>();
-                                  renderer.gameObject.GetComponent<fumofiy>().enabled = true;
-                                  renderer.gameObject.GetComponent<fumofiy>().masterSkull = renderer.gameObject;
-                                  renderer.gameObject.GetComponent<fumofiy>().DoTheFumo();
-                        }
-                    }
-                }
-        }
-
-        public class fumofiy : MonoBehaviour
-        {
-            public void DoTheFumo()
+            public static void Prefix(Skull __instance)
             {
-                if(masterSkull)
+                Renderer masterSkull = __instance.gameObject.GetComponent<Renderer>();
+                if (masterSkull)
                 {
-                    switch (masterSkull.GetComponent<ItemIdentifier>().itemType)
+                    GameObject fumo;
+                    string fumoType;
+                    switch (__instance.GetComponent<ItemIdentifier>().itemType)
                     {
                         case ItemType.SkullBlue:
                             fumoType = "Crino";
-                            fumo = Plugin.fumobundle.LoadAsset<GameObject>("CrinoGO");
                         break;
 
                         case ItemType.SkullRed:
                             fumoType = "Reimu";
-                            fumo = Plugin.fumobundle.LoadAsset<GameObject>("ReimuGO");
                             break;
 
                         case ItemType.Torch:
                             fumoType = "YuYu";
-                            fumo = Plugin.fumobundle.LoadAsset<GameObject>("YuYuGO");
                             break;
 
                         default:
-                            fumoType = "";
-                            break;
-                    }
-                    if(fumoType != "")
-                    {
-                        masterSkull.GetComponent<Renderer>().enabled = false;
-                        GameObject SkullFumo = GameObject.Instantiate(fumo, masterSkull.transform);
-                        SkullFumo.transform.localRotation = Quaternion.Euler(90, 0, 0);
-                    }
+                            return;
+                     }
+                    masterSkull.enabled = false;
+                    GameObject fumo = allFumos[fumoType];
+                    GameObject SkullFumo = GameObject.Instantiate(fumo, masterSkull.transform);
+                    SkullFumo.transform.localRotation = Quaternion.Euler(90, 0, 0);
                 }
             }
-
-            public GameObject masterSkull;
-            GameObject fumo;
-            string fumoType;
         }
     }
 }
