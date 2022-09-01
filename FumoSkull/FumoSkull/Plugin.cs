@@ -1,38 +1,27 @@
-﻿using BepInEx;
+﻿using System.Collections.Generic;
+using BepInEx;
 using HarmonyLib;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace FumoSkull
 {
     [BepInPlugin("TonyFumos", "FumoSkull", "1.0.0")]
     public class Plugin : BaseUnityPlugin
     {
-        public Scene sScene;
         public static Dictionary<string, GameObject> allFumos = new Dictionary<string, GameObject>();
         bool fumofied;
 
         public static AssetBundle fumobundle;
 
-        /*private void Start()
-        {
-            SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
-        }*/
-
         private void Awake()
         {
-            SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
             fumobundle = AssetBundle.LoadFromMemory(Resource1.fumoskull);
             fumobundle.LoadAllAssets();
             new Harmony("tonyfumo.fumoskull").PatchAll();
+            //9
             allFumos.Add("Crino", Plugin.fumobundle.LoadAsset<GameObject>("CrinoGO"));
             allFumos.Add("Reimu", Plugin.fumobundle.LoadAsset<GameObject>("ReimuGO"));
             allFumos.Add("YuYu", Plugin.fumobundle.LoadAsset<GameObject>("YuYuGO"));
-        }
-
-        private void SceneManagerOnsceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            sScene = scene;
         }
 
         [HarmonyPatch(typeof(Skull), "Start")]
@@ -43,7 +32,6 @@ namespace FumoSkull
                 Renderer masterSkull = __instance.gameObject.GetComponent<Renderer>();
                 if (masterSkull)
                 {
-                    GameObject fumo;
                     string fumoType;
                     switch (__instance.GetComponent<ItemIdentifier>().itemType)
                     {
@@ -63,8 +51,8 @@ namespace FumoSkull
                             return;
                      }
                     masterSkull.enabled = false;
-                    GameObject fumo = allFumos[fumoType];
-                    GameObject SkullFumo = GameObject.Instantiate(fumo, masterSkull.transform);
+                    GameObject _fumo = allFumos[fumoType];
+                    GameObject SkullFumo = GameObject.Instantiate(_fumo, masterSkull.transform);
                     SkullFumo.transform.localRotation = Quaternion.Euler(90, 0, 0);
                 }
             }

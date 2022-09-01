@@ -2739,11 +2739,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ultrakill mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
+      "projectUniqueName": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
       "projectName": "FumoSkull",
-      "projectPath": "E:\\ultrakill mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
+      "projectPath": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
       "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-      "outputPath": "E:\\ultrakill mods\\FumoSkulls\\FumoSkull\\FumoSkull\\obj\\",
+      "outputPath": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

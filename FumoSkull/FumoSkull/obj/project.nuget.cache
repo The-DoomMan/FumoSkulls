@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QBLpm4gcOG5Pb5Y+U+Luk/QfYwasuWJYScMNVP2+bSufu0FucoQaTEJzazvdB4mKHRklf6D2Y72/gydQl3M2FA==",
+  "dgSpecHash": "mxhzS+L9zTOijbepc5fWw6JH6UL+syAO0PxtGuS3xY1FR6kYhlroFVTMdZYPq4RC2BychhaLUz7Xqa4WK4ioYw==",
   "success": true,
-  "projectFilePath": "E:\\ultrakill mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
+  "projectFilePath": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\acer\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\bepinex.baselib\\5.4.20\\bepinex.baselib.5.4.20.nupkg.sha512",
