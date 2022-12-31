@@ -63,9 +63,9 @@ namespace FumoSkull {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] fumoskull {
+        internal static byte[] fumoskulls {
             get {
-                object obj = ResourceManager.GetObject("fumoskull", resourceCulture);
+                object obj = ResourceManager.GetObject("fumoskulls", resourceCulture);
                 return ((byte[])(obj));
             }
         }

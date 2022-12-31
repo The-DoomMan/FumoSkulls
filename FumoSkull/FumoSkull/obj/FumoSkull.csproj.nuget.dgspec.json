@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj": {}
+    "D:\\Ultrakill Mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj": {}
   },
   "projects": {
-    "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj": {
+    "D:\\Ultrakill Mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
+        "projectUniqueName": "D:\\Ultrakill Mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
         "projectName": "FumoSkull",
-        "projectPath": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "E:\\ultrakill mods\\Fumo_Skulls\\FumoSkull\\FumoSkull\\obj\\",
+        "projectPath": "D:\\Ultrakill Mods\\FumoSkulls\\FumoSkull\\FumoSkull\\FumoSkull.csproj",
+        "packagesPath": "C:\\Users\\M.S.I\\.nuget\\packages\\",
+        "outputPath": "D:\\Ultrakill Mods\\FumoSkulls\\FumoSkull\\FumoSkull\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\M.S.I\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,11 +72,12 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

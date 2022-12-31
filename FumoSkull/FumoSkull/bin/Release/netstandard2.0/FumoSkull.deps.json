@@ -14,7 +14,8 @@
           "BepInEx.PluginInfoProps": "1.1.0",
           "NETStandard.Library": "2.0.3",
           "UnityEngine.Modules": "2019.4.16",
-          "Assembly-CSharp": "0.0.0.0"
+          "Assembly-CSharp": "0.0.0.0",
+          "UMM": "1.0.0.0"
         },
         "runtime": {
           "FumoSkull.dll": {}
@@ -394,6 +395,14 @@
           }
         }
       },
+      "UMM/1.0.0.0": {
+        "runtime": {
+          "UMM.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Facepunch.Steamworks.Win64/1.0.0.0": {
         "runtime": {
           "Facepunch.Steamworks.Win64.dll": {
@@ -426,25 +435,9 @@
           }
         }
       },
-      "Unity.TextMeshPro/0.0.0.0": {
-        "runtime": {
-          "Unity.TextMeshPro.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "UnityUIExtensions/0.0.0.0": {
         "runtime": {
           "UnityUIExtensions.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "NewBlood.LegacyInput/0.0.0.0": {
-        "runtime": {
-          "NewBlood.LegacyInput.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -458,9 +451,25 @@
           }
         }
       },
+      "NewBlood.LegacyInput/0.0.0.0": {
+        "runtime": {
+          "NewBlood.LegacyInput.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Unity.ProBuilder/0.0.0.0": {
         "runtime": {
           "Unity.ProBuilder.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.TextMeshPro/0.0.0.0": {
+        "runtime": {
+          "Unity.TextMeshPro.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -768,6 +777,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "UMM/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Facepunch.Steamworks.Win64/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -788,17 +802,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.TextMeshPro/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "UnityUIExtensions/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "NewBlood.LegacyInput/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -808,7 +812,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "NewBlood.LegacyInput/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.ProBuilder/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.TextMeshPro/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
