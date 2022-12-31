@@ -6,3 +6,9 @@ Replaces both the red and blue skulls with fumos (reimu and crino)
 
 
 ![image](https://user-images.githubusercontent.com/106477378/185877472-1587d877-2a56-4563-b8f7-b9dd935ae16b.png)
+
+
+credits:
+Renafox - Reimu and Cirno 3d scans on sketchfab
+203Null - Koishi 3d scan on sketchfab
+KBMollysuh - Yuyuko 3d scan on sketchfab
