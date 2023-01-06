@@ -8,7 +8,7 @@ using UnityEngine.UIElements.UIR;
 namespace FumoSkull
 {
     //[BepInPlugin("TonyFumos", "FumoSkull", "1.0.0")]
-    [UKPlugin("Fumo Skulls", "1.1.0", "Replaces the skulls with fumos ᗜˬᗜ", true, true)]
+    [UKPlugin("Fumo Skulls", "1.1.1", "Replaces the skulls with fumos ᗜˬᗜ", true, true)]
     public class FumoSkulls : UKMod
     {
         public static Dictionary<string, GameObject> allFumos = new Dictionary<string, GameObject>();
