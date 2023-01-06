@@ -30,6 +30,7 @@ namespace FumoSkull
             allFumos.Add("Reimu", FumoSkulls.fumobundle.LoadAsset<GameObject>("ReimuGO"));
             allFumos.Add("YuYu", FumoSkulls.fumobundle.LoadAsset<GameObject>("YuYuGO"));
             allFumos.Add("Koishi", FumoSkulls.fumobundle.LoadAsset<GameObject>("KoishiGO"));
+            allFumos.Add("Sakuya", FumoSkulls.fumobundle.LoadAsset<GameObject>("SakuyaGO"));
         }
 
         public override void OnModUnload()
@@ -73,6 +74,47 @@ namespace FumoSkull
                 }
             }
         }
+
+        [HarmonyPatch(typeof(Grenade), "Start")]
+        public static class fumofiyrocket
+        {
+            public static void Postfix(Grenade __instance)
+            {
+                Renderer[] masterSkull = __instance.gameObject.GetComponentsInChildren<MeshRenderer>();
+                if (masterSkull.Length > 0 && __instance.rocket)
+                {
+                    for(int i = 0; i < masterSkull.Length; i++)
+                    {
+                        masterSkull[i].enabled = false;
+                    }
+                    Vector3 fumoposition = new Vector3(0f, 0f, 2f);
+                    Quaternion fumorotation = Quaternion.Euler(0, 0, 60);
+                    Vector3 fumoscale = new Vector3(1f, 1f, 1f) * 10f;
+                    CreateFumo("Sakuya", __instance.transform, fumoposition, fumorotation, fumoscale);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Ferryman), "Start")]
+        public static class FerrymanHeadPatcher
+        {
+            public static void Prefix(Ferryman __instance)
+            {
+
+                    GameObject Ferryhead = __instance.GetComponent<EnemyIdentifier>().weakPoint;
+                    if (Ferryhead)
+                    {
+                        string fumoType;
+                        Vector3 fumoposition = new Vector3(0, 0.0015f, 0);
+                        Quaternion fumorotation = Quaternion.Euler(270, 0, 0);
+                        Vector3 fumoscale = new Vector3(1, 1, 1) * 0.0075f;
+                        fumoType = "Cirno";
+                        CreateFumo(fumoType, Ferryhead.transform, fumoposition, fumorotation, fumoscale);
+                    }
+            }
+        }
+
+
         [HarmonyPatch(typeof(Torch), "Start")]
         public static class fumofiytorch
         {
@@ -114,6 +156,7 @@ namespace FumoSkull
             Debug.Log("Swapping " + masterSkull.name + " to " + fumoType);
             GameObject _fumo = allFumos[fumoType];
             GameObject SkullFumo = GameObject.Instantiate(_fumo, masterSkull);
+            SkullFumo.active = true;
             SkullFumo.transform.localRotation = rotation;
             SkullFumo.transform.localPosition = position;
             SkullFumo.transform.localScale = scale;
