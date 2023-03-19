@@ -25,7 +25,7 @@
       <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UMM">
-      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ULTRAKILL - normal\BepInEx\plugins\UMM\UMM.dll</HintPath>
+      <HintPath>..\..\..\..\SteamLibrary\steamapps\common\ULTRAKILL\BepInEx\plugins\UMM\UMM.dll</HintPath>
     </Reference>
   </ItemGroup>
   

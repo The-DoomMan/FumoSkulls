@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 using UMM;
-using UnityEngine.UIElements.UIR;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 namespace FumoSkull
 {
-    //[BepInPlugin("TonyFumos", "FumoSkull", "1.0.0")]
-    [UKPlugin("Fumo Skulls", "1.1.1", "Replaces the skulls with fumos ᗜˬᗜ", true, true)]
+    [UKPlugin("Tony.Fumoskulls", "Fumo Skulls", "1.1.2", "Replaces the skulls with fumos ᗜˬᗜ", true, true)]
     public class FumoSkulls : UKMod
     {
         public static Dictionary<string, GameObject> allFumos = new Dictionary<string, GameObject>();
@@ -17,7 +16,26 @@ namespace FumoSkull
         Harmony fumo;
 
         public static AssetBundle fumobundle;
+        static Shader unlit;
 
+
+        private void Start()
+        {
+            SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
+        }
+
+        private void SceneManagerOnsceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            AssetBundle[] elbundles = AssetBundle.GetAllLoadedAssetBundles().ToArray();
+            foreach (AssetBundle bundle in elbundles)
+            {
+                if (bundle.name == "bundle-0")
+                {
+                    unlit = bundle.LoadAsset<Shader>("Assets/Shaders/Main/ULTRAKILL-unlit.shader");
+                    continue;
+                }
+            }
+        }
 
         public override void OnModLoaded()
         {
@@ -166,7 +184,7 @@ namespace FumoSkull
                 Material[] fumomaterial = ren.materials;
                 foreach(Material mat in fumomaterial)
                 {
-                    mat.shader = Shader.Find("psx/unlit/unlit");
+                    mat.shader = unlit;
                 }
             }
         }

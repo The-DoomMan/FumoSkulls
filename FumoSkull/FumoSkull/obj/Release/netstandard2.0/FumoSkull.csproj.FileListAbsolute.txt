@@ -77,3 +77,5 @@ D:\Ultrakill Mods\FumoSkulls\FumoSkull\FumoSkull\obj\Release\netstandard2.0\Fumo
 D:\Ultrakill Mods\FumoSkulls\FumoSkull\FumoSkull\obj\Release\netstandard2.0\FumoSkull.csproj.CopyComplete
 D:\Ultrakill Mods\FumoSkulls\FumoSkull\FumoSkull\obj\Release\netstandard2.0\FumoSkull.dll
 D:\Ultrakill Mods\FumoSkulls\FumoSkull\FumoSkull\obj\Release\netstandard2.0\FumoSkull.pdb
+D:\Ultrakill Mods\FumoSkulls\FumoSkull\FumoSkull\bin\Release\netstandard2.0\pcon.unity.dll
+D:\Ultrakill Mods\FumoSkulls\FumoSkull\FumoSkull\bin\Release\netstandard2.0\endel.nativewebsocket.dll
