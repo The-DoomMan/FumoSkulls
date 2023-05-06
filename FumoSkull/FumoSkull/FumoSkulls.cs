@@ -34,6 +34,10 @@ namespace FumoSkull
                     unlit = bundle.LoadAsset<Shader>("Assets/Shaders/Main/ULTRAKILL-unlit.shader");
                     continue;
                 }
+                if(unlit == null)
+                {
+                  unlit = Shader.Find("Unlit/Texture");
+                }
             }
         }
 
