@@ -1,4 +1,5 @@
-
+FumoSkull/FumoSkull/obj/
+FumoSkull/FumoSkull/bin/
 FumoSkull/FumoSkull/bin/Release/netstandard2.0/UnityUIExtensions.dll
 FumoSkull/FumoSkull/bin/Release/netstandard2.0/UnityEngine.UI.dll
 FumoSkull/FumoSkull/bin/Release/netstandard2.0/Unity.TextMeshPro.dll
