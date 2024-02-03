@@ -1,63 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using BepInEx;
+using BepInEx.Logging;
+using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
-using UMM;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
 namespace FumoSkull
 {
-    [UKPlugin("Tony.Fumoskulls", "Fumo Skulls", "1.1.2", "Replaces the skulls with fumos ᗜˬᗜ", true, true)]
-    public class FumoSkulls : UKMod
+    [BepInPlugin("Tony.Fumoskulls", "Fumo Skulls", "1.2")]
+    public class FumoSkulls : BaseUnityPlugin
     {
         public static Dictionary<string, GameObject> allFumos = new Dictionary<string, GameObject>();
-        bool fumofied;
 
         Harmony fumo;
 
         public static AssetBundle fumobundle;
         static Shader unlit;
 
-
-        private void Start()
+        private void Awake()
         {
-            SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
-        }
-
-        private void SceneManagerOnsceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            AssetBundle[] elbundles = AssetBundle.GetAllLoadedAssetBundles().ToArray();
-            foreach (AssetBundle bundle in elbundles)
-            {
-                if (bundle.name == "bundle-0")
-                {
-                    unlit = bundle.LoadAsset<Shader>("Assets/Shaders/Main/ULTRAKILL-unlit.shader");
-                    continue;
-                }
-            }
-        }
-
-        public override void OnModLoaded()
-        {
+            unlit = Shader.Find("Unlit/Texture");
             fumobundle = AssetBundle.LoadFromMemory(Resource1.fumoskulls);
             fumobundle.LoadAllAssets();
             fumo = new Harmony("Tony.Fumoskulls");
             fumo.PatchAll();
-            //9
-            allFumos.Add("Cirno", FumoSkulls.fumobundle.LoadAsset<GameObject>("CirnoGO"));
-            allFumos.Add("Reimu", FumoSkulls.fumobundle.LoadAsset<GameObject>("ReimuGO"));
-            allFumos.Add("YuYu", FumoSkulls.fumobundle.LoadAsset<GameObject>("YuYuGO"));
-            allFumos.Add("Koishi", FumoSkulls.fumobundle.LoadAsset<GameObject>("KoishiGO"));
-            allFumos.Add("Sakuya", FumoSkulls.fumobundle.LoadAsset<GameObject>("SakuyaGO"));
-        }
-
-        public override void OnModUnload()
-        {
-            allFumos.Clear();
-            fumo.UnpatchSelf();
-            fumo = null;
-            fumobundle.Unload(true);
-            fumobundle = null;
+            allFumos.Add("Cirno", fumobundle.LoadAsset<GameObject>("CirnoGO"));
+            allFumos.Add("Reimu", fumobundle.LoadAsset<GameObject>("ReimuGO"));
+            allFumos.Add("YuYu", fumobundle.LoadAsset<GameObject>("YuYuGO"));
+            allFumos.Add("Koishi", fumobundle.LoadAsset<GameObject>("KoishiGO"));
+            allFumos.Add("Sakuya", fumobundle.LoadAsset<GameObject>("SakuyaGO"));
         }
 
         [HarmonyPatch(typeof(Skull), "Start")]
@@ -86,7 +58,7 @@ namespace FumoSkull
                         default:
                             fumoType = "Reimu";
                             return;
-                     }
+                    }
                     masterSkull.enabled = false;
                     CreateFumo(fumoType, masterSkull.transform, fumoposition, fumorotation, fumoscale);
                 }
@@ -101,7 +73,7 @@ namespace FumoSkull
                 Renderer[] masterSkull = __instance.gameObject.GetComponentsInChildren<MeshRenderer>();
                 if (masterSkull.Length > 0 && __instance.rocket)
                 {
-                    for(int i = 0; i < masterSkull.Length; i++)
+                    for (int i = 0; i < masterSkull.Length; i++)
                     {
                         masterSkull[i].enabled = false;
                     }
@@ -119,16 +91,16 @@ namespace FumoSkull
             public static void Prefix(Ferryman __instance)
             {
 
-                    GameObject Ferryhead = __instance.GetComponent<EnemyIdentifier>().weakPoint;
-                    if (Ferryhead)
-                    {
-                        string fumoType;
-                        Vector3 fumoposition = new Vector3(0, 0.0015f, 0);
-                        Quaternion fumorotation = Quaternion.Euler(270, 0, 0);
-                        Vector3 fumoscale = new Vector3(1, 1, 1) * 0.0075f;
-                        fumoType = "Cirno";
-                        CreateFumo(fumoType, Ferryhead.transform, fumoposition, fumorotation, fumoscale);
-                    }
+                GameObject Ferryhead = __instance.GetComponent<EnemyIdentifier>().weakPoint;
+                if (Ferryhead)
+                {
+                    string fumoType;
+                    Vector3 fumoposition = new Vector3(0, 0.0015f, 0);
+                    Quaternion fumorotation = Quaternion.Euler(270, 0, 0);
+                    Vector3 fumoscale = new Vector3(1, 1, 1) * 0.0075f;
+                    fumoType = "Cirno";
+                    CreateFumo(fumoType, Ferryhead.transform, fumoposition, fumorotation, fumoscale);
+                }
             }
         }
 
@@ -179,10 +151,10 @@ namespace FumoSkull
             SkullFumo.transform.localPosition = position;
             SkullFumo.transform.localScale = scale;
             Renderer[] fumomatter = SkullFumo.GetComponentsInChildren<Renderer>();
-            foreach(Renderer ren in fumomatter)
+            foreach (Renderer ren in fumomatter)
             {
                 Material[] fumomaterial = ren.materials;
-                foreach(Material mat in fumomaterial)
+                foreach (Material mat in fumomaterial)
                 {
                     mat.shader = unlit;
                 }
